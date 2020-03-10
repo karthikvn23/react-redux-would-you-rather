@@ -1,24 +1,20 @@
-import { _getUsers, _getQuestions } from '../utils/_DATA'
-import { getUsers } from '../actions/users'
-import { getQuestions } from '../actions/questions'
+import { getInitialData } from '../utils/api'
+import { receiveUsers } from '../actions/users'
+import { receiveQuestions } from '../actions/questions'
+import { setAuthedUser } from '../actions/authedUser'
 
-export function handleInitialData (){
-    return (dispatch) => {
-        return Promise.all([_getUsers(), _getQuestions()])
-                .then(
-                    ([users, questions]) => {
-                        const obj = {
-                            users,
-                            questions
-                        }
-                        return obj
-                    }
-                )
-                .then(
-                    ({users, questions}) => {
-                        dispatch(getUsers(users))
-                        dispatch(getQuestions(questions))
-                    }
-                )
-    }
+export function handleInitialData () {
+  return (dispatch) => {
+    return getInitialData()
+      .then(({ users, questions }) => {
+        dispatch(receiveUsers(users))
+        dispatch(receiveQuestions(questions))
+      })
+  }
 }
+
+export function authenticate (authedId ) {
+    return (dispatch) => {
+      dispatch(setAuthedUser(authedId))
+    }
+  }

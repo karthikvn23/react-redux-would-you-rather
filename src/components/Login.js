@@ -1,86 +1,81 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Form, Header } from 'semantic-ui-react'
-import { setAuthUser } from '../actions/authedUser'
+import { authenticate } from '../actions/shared'
+
 
 class Login extends Component {
 
     state = {
-        selectedUser: ''
+        user: "",
+        login_failed: false
+    };
+
+    componentDidMount(){
+        // redirect to home if user is already authenticated
+        this.props.authedUser && this.props.history.push('/home')
     }
 
-    populateUserDatat = () => {
-        console.log('Props ', this.props)
-        const { users } = this.props
-
-        return users.map(
-            user => ({
-                key: user.id,
-                text: user.name,
-                value: user.id,
-            })
-        )
+    handleUserSelected = (user) => {
+        if(user !== ""){
+            this.setState({
+                user: user,
+                login_failed: false,
+            });
+        }  
     }
 
-    handleSubmit = (e) => {
-
-        e.preventDefault()
-
-        const authedUser = this.state.selectedUser
-
-        console.log('authedUser: ', authedUser)
-
-        new Promise(
-            (resolve) => {
-                setTimeout(
-                    () => resolve(),
-                    500
-                )
-            }
-        ).then(
-            () => this.props.dispatch(setAuthUser(authedUser))
-        )
+    handleClick = ()  => {
+        if(this.state.user !== ""){
+            this.props.dispatch(authenticate(this.state.user))
+            this.props.match.params.id 
+                ? this.props.history.push(`/questions/${this.props.match.params.id }`)
+                : this.props.history.push('/home')
+        }else{
+            this.setState({
+                login_failed: true,
+            });
+        }
     }
 
-    onChange = (e, { value }) => {
-        this.setState(
-            {
-                selectedUser: value
-            }
-        )
-    }
-
-    render(){
-
-        const { selectedUser } = this.state
-
-        return (
-            <Form className="ui form" onSubmit={this.handleSubmit}>
-                <Header>
-                    Sign In
-                </Header>
+    render() {
+      const { users } = this.props
+      const { login_failed, user } = this.state
+      return (
+          <div className="login-box"> 
+              <p className="text-center">Login to play</p>
+              {login_failed &&
                 <div>
-                <Form.Dropdown
-                    placeholder='Select a user to login'
-                    options={this.populateUserDatat()}
-                    value={selectedUser}
-                    onChange={this.onChange}
-                    fluid
-                    selection
-                    scrolling
-                    required
-                />
+                    <small>You have to choose a user to login</small><br /><br />
                 </div>
-                <Form.Button content="Login" fluid positive/>
-            </Form>
-        )
+              }
+              <select className="form-control" value={user} onChange={(e) => this.handleUserSelected(e.target.value)}>
+                <option value="">Choose a User</option>
+                {users.length > 0 &&
+                    users.map((user) => (
+                    <option value={user.id} key={user.id}>{user.name}</option>
+                ))}
+              </select>
+              <button className="btn-login form-control" type="submit" onClick={this.handleClick}>
+                  Login
+              </button>
+          </div>
+      );
     }
 }
 
-function mapStateToProps( {users} ) {
+function mapStateToProps ({ users, authedUser }) {
+    var userArray = [];
+    Object.entries(users).forEach(
+        ([key, value]) => 
+        userArray.push({
+            id: value.id,
+            name: value.name,
+        })
+    );
     return {
-        users: Object.values(users)
+        users: userArray,
+        authedUser
     }
 }
-
-export default connect(mapStateToProps)(Login)
+  
+  export default connect(mapStateToProps)(Login);

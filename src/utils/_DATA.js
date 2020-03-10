@@ -1,8 +1,8 @@
 let users = {
   kvellur: {
     id: 'kvellur',
-    name: 'Karthik vellur',
-    avatarURL: '/images/avatar/tiger.png',
+    name: 'Karthik Vellur',
+    avatarURL: 'https://cdn.pixabay.com/photo/2015/01/01/17/02/tiger-585855__340.jpg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -13,54 +13,18 @@ let users = {
   },
   nvellur: {
     id: 'nvellur',
-    name: 'Nidhiv vellur',
-    avatarURL: '/images/avatar/rabbit.png',
-    answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo',
-      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-      "loxhs1bqm25b708cmbf3g": 'optionTwo'
-    },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
-  },
-  rajinig: {
-    id: 'rajinig',
-    name: 'Rajinikala G',
-    avatarURL: '/images/avatar/lion.png',
-    answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo',
-      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-      "loxhs1bqm25b708cmbf3g": 'optionTwo'
-    },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
-  },
-  sarahedo: {
-    id: 'sarahedo',
-    name: 'Sarah Edo',
-    avatarURL: '/images/avatar/cat.png',
-    answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo',
-      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-      "loxhs1bqm25b708cmbf3g": 'optionTwo'
-    },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
-  },
-  tylermcginnis: {
-    id: 'tylermcginnis',
-    name: 'Tyler McGinnis',
-    avatarURL: '/images/avatar/dog.png',
+    name: 'Nidhi Vellur',
+    avatarURL: 'https://cdn.pixabay.com/photo/2020/03/07/12/57/steinhuder-sea-4909703__340.jpg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
-  johndoe: {
-    id: 'johndoe',
-    name: 'John Doe',
-    avatarURL: '/images/avatar/fox.png',
+  rajinikalag: {
+    id: 'rajinikalag',
+    name: 'Rajinikala G',
+    avatarURL: 'https://cdn.pixabay.com/photo/2020/03/03/20/31/laguna-4899802__340.jpg',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -73,10 +37,10 @@ let users = {
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
     id: '8xf0y6ziyjabvozdd253nd',
-    author: 'sarahedo',
+    author: 'kvellur',
     timestamp: 1467166872634,
     optionOne: {
-      votes: ['sarahedo'],
+      votes: ['kvellur'],
       text: 'have horrible short term memory',
     },
     optionTwo: {
@@ -86,66 +50,66 @@ let questions = {
   },
   "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
-    author: 'johndoe',
+    author: 'rajinikalag',
     timestamp: 1468479767190,
     optionOne: {
       votes: [],
       text: 'become a superhero',
     },
     optionTwo: {
-      votes: ['johndoe', 'sarahedo'],
+      votes: ['rajinikalag', 'kvellur'],
       text: 'become a supervillain'
     }
   },
   "am8ehyc8byjqgar0jgpub9": {
     id: 'am8ehyc8byjqgar0jgpub9',
-    author: 'sarahedo',
+    author: 'kvellur',
     timestamp: 1488579767190,
     optionOne: {
       votes: [],
       text: 'be telekinetic',
     },
     optionTwo: {
-      votes: ['sarahedo'],
+      votes: ['kvellur'],
       text: 'be telepathic'
     }
   },
   "loxhs1bqm25b708cmbf3g": {
     id: 'loxhs1bqm25b708cmbf3g',
-    author: 'tylermcginnis',
+    author: 'nvellur',
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
       text: 'be a front-end developer',
     },
     optionTwo: {
-      votes: ['sarahedo'],
+      votes: ['kvellur'],
       text: 'be a back-end developer'
     }
   },
   "vthrdm985a262al8qx3do": {
     id: 'vthrdm985a262al8qx3do',
-    author: 'tylermcginnis',
+    author: 'nvellur',
     timestamp: 1489579767190,
     optionOne: {
-      votes: ['tylermcginnis'],
+      votes: ['nvellur'],
       text: 'find $50 yourself',
     },
     optionTwo: {
-      votes: ['johndoe'],
+      votes: ['rajinikalag'],
       text: 'have your best friend find $500'
     }
   },
   "xj352vofupe1dqz9emx13r": {
     id: 'xj352vofupe1dqz9emx13r',
-    author: 'johndoe',
+    author: 'rajinikalag',
     timestamp: 1493579767190,
     optionOne: {
-      votes: ['johndoe'],
+      votes: ['rajinikalag'],
       text: 'write JavaScript',
     },
     optionTwo: {
-      votes: ['tylermcginnis'],
+      votes: ['nvellur'],
       text: 'write Swift'
     }
   },
@@ -232,7 +196,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
         }
       }
 
-      res()
+      res({ authedUser, qid, answer })
     }, 500)
   })
 }
