@@ -1,5 +1,4 @@
 import { _getUsers, _getQuestions } from '../utils/_DATA'
-import { getInitialData } from '../utils/api';
 import { getUsers } from '../actions/users'
 import { getQuestions } from '../actions/questions'
 
@@ -17,8 +16,6 @@ export function handleInitialData (){
                 )
                 .then(
                     ({users, questions}) => {
-                        console.log('users: ', users)
-                        console.log('questions: ', questions)
                         dispatch(getUsers(users))
                         dispatch(getQuestions(questions))
                     }
